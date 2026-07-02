@@ -1,7 +1,6 @@
-import Header from '@/components/features/Header';
-import BasedOnRecent from '@/components/Home/BasedOnRecent';
-import ContinueListening from '@/components/Home/ContinueListening';
-import YourTopMixes from '@/components/Home/YourTopMixes';
+import BrowseAll from '@/components/Explore/BrowseAll';
+import Search from '@/components/Explore/Search';
+import YourTopGenres from '@/components/Explore/YourTopGenres';
 import React from 'react';
 
 const page = () => {
@@ -15,11 +14,10 @@ const page = () => {
         }}
       />
       <div className="z-10 relative">
-        <div className="p-9.25">
-          <Header />
-          <ContinueListening />
-          <YourTopMixes />
-          <BasedOnRecent />
+        <div className="p-6">
+          <Search />
+          <YourTopGenres />
+          <BrowseAll />
         </div>
       </div>
     </div>
