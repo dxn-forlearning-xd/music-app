@@ -1,6 +1,6 @@
-import BrowseAll from '@/components/Explore/BrowseAll';
-import Search from '@/components/Explore/Search';
-import YourTopGenres from '@/components/Explore/YourTopGenres';
+import BrowseAll from '@/components/explore/BrowseAll';
+import Search from '@/components/explore/Search';
+import YourTopGenres from '@/components/explore/YourTopGenres';
 import React from 'react';
 
 const page = () => {

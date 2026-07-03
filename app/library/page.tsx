@@ -1,8 +1,8 @@
-import LibraryHeader from '@/components/Library/LibraryHeader';
-import LibraryTabs from '@/components/Library/LibraryTabs';
-import LikedSongs from '@/components/Library/LikedSongs';
-import RencentLists from '@/components/Library/RencentLists';
-import React from 'react';
+import LibraryHeader from "@/components/library/LibraryHeader";
+import LibraryTabs from "@/components/library/LibraryTabs";
+import LikedSongs from "@/components/library/LikedSongs";
+import RencentLists from "@/components/library/RencentLists";
+import React from "react";
 
 const page = () => {
   // const data = await getLibraryData();
