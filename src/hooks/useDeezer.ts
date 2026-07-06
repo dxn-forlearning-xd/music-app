@@ -1,5 +1,5 @@
-import { fetcher } from '@/utils/fetcher';
-import useSWR from 'swr';
+import { fetcher } from "@/utils/fetcher";
+import useSWR from "swr";
 
 export interface Artist {
   id: number;
@@ -14,12 +14,14 @@ export interface Track {
   artist: Artist;
   preview: string;
   duration: number;
+  album: Album;
 }
 
 export interface Album {
   id: number;
   title: string;
   cover_big: string;
+  cover_medium: string;
   artist: {
     name: string;
   };
@@ -43,4 +45,8 @@ export const useDeezerData = (category: string) => {
 
 export const usePlaylistDetails = (id: string) => {
   return useDeezerData(`playlist/${id}`);
+};
+
+export const useAlbumDetails = (id: string) => {
+  return useDeezerData(`album/${id}`);
 };

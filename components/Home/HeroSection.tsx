@@ -1,14 +1,15 @@
-'use client';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import Image from 'next/image';
+"use client";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import Image from "next/image";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import { Album, useDeezerData } from '@/src/hooks/useDeezer';
+import "swiper/css";
+import "swiper/css/pagination";
+import { Album, useDeezerData } from "@/src/hooks/useDeezer";
+import Link from "next/link";
 
 export const HeroSection = () => {
-  const { data, isLoading, isError } = useDeezerData('chart');
+  const { data, isLoading, isError } = useDeezerData("chart");
   const albums = data?.albums.data;
   if (isLoading) {
     return (
@@ -53,12 +54,15 @@ export const HeroSection = () => {
                 Trending Now
               </span>
               <h2 className="text-3xl font-black text-white mt-1">{i.title}</h2>
-              <p className="text-gray-300 text-sm mt-1">
-                {i.artist?.name || 'Various Artists'}
+              <p className="text-gray-300 text-sm my-2">
+                {i.artist?.name || "Various Artists"}
               </p>
-              <button className="mt-4 px-6 py-2 bg-white text-black font-bold text-sm rounded-full hover:bg-cyan-400 transition cursor-pointer">
+              <Link
+                href={`/album/${i.id}`}
+                className="mt-4 px-6 py-2 bg-white text-black font-bold text-sm rounded-full hover:bg-cyan-400 transition cursor-pointer"
+              >
                 Play Now
-              </button>
+              </Link>
             </div>
           </SwiperSlide>
         ))}

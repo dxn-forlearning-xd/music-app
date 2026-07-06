@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from "next/image";
 
 interface CategoryCardProps {
   title: string;
@@ -15,7 +15,8 @@ const CategoryCard = ({ title, image, onClick }: CategoryCardProps) => {
       <h3 className="absolute text-white font-bold text-[16px] w-20 p-2">
         {title}
       </h3>
-      <Image src={image} width={167} height={98} alt="" />
+      {/* <Image src={image} width={167} height={98} alt="" /> */}
+      <div className="w-41.75 h-24.5 bg-gray-600"></div>
     </button>
   );
 };

@@ -1,12 +1,12 @@
-'use client';
-import { Track, useDeezerData } from '@/src/hooks/useDeezer';
-import { getImageUrl } from '@/utils/imageHelper';
-import { Play } from 'lucide-react';
-import Image from 'next/image';
-import React from 'react';
+"use client";
+import { Track, useDeezerData } from "@/src/hooks/useDeezer";
+import { getImageUrl } from "@/utils/imageHelper";
+import Image from "next/image";
+import React from "react";
+import PlayButton from "../ui/PlayButton";
 
 const TopPicks = () => {
-  const { data, isLoading, isError } = useDeezerData('chart');
+  const { data, isLoading, isError } = useDeezerData("chart");
 
   const tracks = data?.tracks.data;
   if (isLoading) {
@@ -45,7 +45,7 @@ const TopPicks = () => {
   return (
     <div className="mt-8 mb-15 ">
       <h2 className="text-2xl font-bold text-white mb-4">Top Picks</h2>
-      <div className="flex flex-col gap-4 ">
+      <div className="flex flex-col gap-4 mb-30">
         {tracks?.map((i: Track) => (
           <div
             key={i.id}
@@ -64,11 +64,7 @@ const TopPicks = () => {
               <p className="text-white font-bold">{i.title}</p>
               <p className="text-gray-400 text-sm">{i.artist.name}</p>
             </div>
-            <div className="ml-auto z-10 transition">
-              <button className="w-10 h-10 bg-cyan-500 text-white fill-white rounded-full flex items-center justify-center cursor-pointer">
-                <Play />
-              </button>
-            </div>
+            <PlayButton track={i} playlist={tracks} />
           </div>
         ))}
       </div>
