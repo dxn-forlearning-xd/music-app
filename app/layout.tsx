@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Special_Gothic } from 'next/font/google';
 import './globals.css';
 import BottomNav from '@/components/features/BottomNav';
+import PlayerBar from '@/components/player/PlayerBar';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -31,6 +32,7 @@ export default function RootLayout({
       <body className="min-h-screen bg-gray-800 flex justify-center">
         <main className="w-112.5 bg-[#0E0E0E]">
           {children}
+          <PlayerBar />
           <BottomNav />
         </main>
       </body>

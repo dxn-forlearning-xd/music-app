@@ -1,6 +1,6 @@
-import Image from "next/image";
-import React from "react";
-import SectionTitle from "../ui/SectionTitle";
+import Image from 'next/image';
+import React from 'react';
+import SectionTitle from '../ui/SectionTitle';
 
 const ContinueListening = () => {
   return (
@@ -8,7 +8,7 @@ const ContinueListening = () => {
       <SectionTitle title="Continue Listening" />
 
       <div className="grid grid-cols-2 gap-3">
-        {[{ name: "1" }, { name: "2" }].map((i) => (
+        {[{ name: '1' }, { name: '2' }].map((i) => (
           <div
             key={i.name}
             className="w-45.75 h-13.75 rounded-lg overflow-hidden bg-[#436369]/20 flex items-center"
