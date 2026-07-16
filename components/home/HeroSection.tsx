@@ -13,9 +13,7 @@ export const HeroSection = () => {
   const albums = data?.albums.data;
   if (isLoading) {
     return (
-      <div className="w-full h-64 mt-6 rounded-2xl overflow-hidden shadow-2xl bg-gray-800 flex items-center justify-center">
-        <span className="text-gray-400 text-lg">Loading albums...</span>
-      </div>
+      <div className="w-full h-64 mt-6 rounded-2xl overflow-hidden shadow-2xl bg-gray-800 flex items-center justify-center"></div>
     );
   }
 

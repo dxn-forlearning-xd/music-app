@@ -4,6 +4,7 @@ import useSWR from "swr";
 export interface Artist {
   id: number;
   name: string;
+  picture_medium: string;
   picture: string;
 }
 
@@ -49,4 +50,15 @@ export const usePlaylistDetails = (id: string) => {
 
 export const useAlbumDetails = (id: string) => {
   return useDeezerData(`album/${id}`);
+};
+
+export const useSearch = (q: string | null) => {
+  return useDeezerData(`search?q=${q}`);
+};
+
+export const useSearchArtists = (q: string | null) => {
+  return useDeezerData(`search/artist?q=${q}`);
+};
+export const useTrackDetails = (id: string) => {
+  return useDeezerData(`track/${id}`);
 };

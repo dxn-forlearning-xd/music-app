@@ -7,8 +7,12 @@ export async function GET(
   const { slug } = await params;
 
   const path = slug.join("/");
-  const apiUrl = `https://api.deezer.com/${path}`;
+  const { searchParams } = new URL(request.url);
+  const queryString = searchParams.toString();
 
+  const apiUrl = queryString
+    ? `https://api.deezer.com/${path}?${queryString}`
+    : `https://api.deezer.com/${path}`;
   try {
     const res = await fetch(apiUrl);
     const data = await res.json();
@@ -19,6 +23,7 @@ export async function GET(
 
     return NextResponse.json(data);
   } catch (error) {
+    console.log(error);
     return NextResponse.json(
       { error: "Failed to fetch from Deezer" },
       { status: 500 },

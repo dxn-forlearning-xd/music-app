@@ -2,10 +2,15 @@
 import { useParams, useRouter } from "next/navigation";
 import { Track, usePlaylistDetails } from "@/src/hooks/useDeezer";
 import Image from "next/image";
-import { ArrowLeft, Play } from "lucide-react";
-import PlayButton from "@/components/ui/PlayButton";
+import { ArrowLeft } from "lucide-react";
+import { mutate } from "swr";
+import TrackItem from "@/components/ui/TrackItem";
+import BackButton from "@/components/ui/BackButton";
+import { useTrackNavigation } from "@/src/hooks/useTrackNavigation";
 
 export default function PlaylistPage() {
+  const { navigateToTrack } = useTrackNavigation();
+
   const { id } = useParams();
   const { data: playlist, isLoading } = usePlaylistDetails(id as string);
   const tracks = playlist?.tracks.data;
@@ -15,14 +20,8 @@ export default function PlaylistPage() {
   if (isLoading) return <div>Loading...</div>;
   return (
     <div className="p-6 text-white min-h-screen">
-      <button
-        onClick={() => router.back()}
-        className="mb-6 flex items-center gap-2 text-gray-400 hover:text-white transition cursor-pointer"
-      >
-        <ArrowLeft /> <span className="font-bold">Back</span>
-      </button>
-
-      <div className="flex gap-6 items-end">
+      <BackButton />
+      <div className="flex gap-6 items-end pb-5">
         <div className="relative w-48 h-48 shrink-0 shadow-2xl">
           <Image
             src={playlist.picture_big}
@@ -39,28 +38,7 @@ export default function PlaylistPage() {
         </div>
       </div>
 
-      <div className="my-8">
-        {playlist.tracks.data.map((i: Track) => (
-          <div
-            key={i.id}
-            className="group flex items-center gap-4 p-3 hover:bg-white/5 rounded-lg transition"
-          >
-            <div className="relative w-16 h-16 shrink-0">
-              <Image
-                src={i.album.cover_medium || i.md5_image}
-                alt={i.title}
-                fill
-                className="object-cover rounded"
-              />
-            </div>
-            <div className="flex flex-col">
-              <p className="text-white font-bold">{i.title}</p>
-              <p className="text-gray-400 text-sm">{i.artist.name}</p>
-            </div>
-            <PlayButton track={i} playlist={tracks} />
-          </div>
-        ))}
-      </div>
+      <TrackItem tracks={tracks} onTrackClick={navigateToTrack} />
     </div>
   );
 }

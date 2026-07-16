@@ -1,6 +1,6 @@
-import BrowseAll from "@/components/explore/BrowseAll";
-import Search from "@/components/explore/Search";
-import YourTopGenres from "@/components/explore/YourTopGenres";
+import SearchBar from "@/components/explore/SearchBar";
+import TrendingPlays from "@/components/explore/TrendingPlays";
+
 import React from "react";
 
 const page = () => {
@@ -15,9 +15,8 @@ const page = () => {
       />
       <div className="z-10 relative">
         <div className="p-6">
-          <Search />
-          <YourTopGenres />
-          <BrowseAll />
+          <SearchBar />
+          <TrendingPlays />
         </div>
       </div>
     </div>

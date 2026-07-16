@@ -1,11 +1,10 @@
 "use client";
-import { Track, useDeezerData } from "@/src/hooks/useDeezer";
-import { getImageUrl } from "@/utils/imageHelper";
-import Image from "next/image";
-import React from "react";
-import PlayButton from "../ui/PlayButton";
+import { useDeezerData } from "@/src/hooks/useDeezer";
+import TrackItem from "../ui/TrackItem";
 
+import { useTrackNavigation } from "@/src/hooks/useTrackNavigation";
 const TopPicks = () => {
+  const { navigateToTrack } = useTrackNavigation();
   const { data, isLoading, isError } = useDeezerData("chart");
 
   const tracks = data?.tracks.data;
@@ -43,31 +42,9 @@ const TopPicks = () => {
     );
   }
   return (
-    <div className="mt-8 mb-15 ">
+    <div className="mt-8 mb-15">
       <h2 className="text-2xl font-bold text-white mb-4">Top Picks</h2>
-      <div className="flex flex-col gap-4 mb-30">
-        {tracks?.map((i: Track) => (
-          <div
-            key={i.id}
-            className="flex items-center gap-4 p-3 hover:bg-white/5 rounded-lg transition"
-          >
-            <div className="relative w-16 h-16 shrink-0">
-              <Image
-                src={getImageUrl(i.md5_image, 100)}
-                alt={i.title}
-                fill
-                sizes=""
-                className="object-cover rounded"
-              />
-            </div>
-            <div className="flex flex-col">
-              <p className="text-white font-bold">{i.title}</p>
-              <p className="text-gray-400 text-sm">{i.artist.name}</p>
-            </div>
-            <PlayButton track={i} playlist={tracks} />
-          </div>
-        ))}
-      </div>
+      <TrackItem tracks={tracks} onTrackClick={navigateToTrack} />
     </div>
   );
 };
