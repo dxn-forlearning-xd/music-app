@@ -1,12 +1,12 @@
 "use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { MouseEvent, useState } from "react";
 
 const SearchBar = () => {
   const [input, setInput] = useState("");
   const router = useRouter();
-  const handleSearch = (e) => {
+  const handleSearch = (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     router.push(`./search?q=${input}`);
   };

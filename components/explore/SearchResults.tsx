@@ -2,18 +2,12 @@
 
 import { useSearchParams } from "next/navigation";
 import Image from "next/image";
-import React, { useState } from "react";
-import {
-  Artist,
-  Track,
-  useSearch,
-  useSearchArtists,
-} from "@/src/hooks/useDeezer";
-import PlayButton from "../ui/PlayButton";
+import React, { Suspense, useState } from "react";
+import { Artist, useSearch, useSearchArtists } from "@/src/hooks/useDeezer";
 import TrackItem from "../ui/TrackItem";
 import { useTrackNavigation } from "@/src/hooks/useTrackNavigation";
 
-const SearchResults = () => {
+function SearchContent() {
   const { navigateToTrack } = useTrackNavigation();
 
   const params = useSearchParams();
@@ -109,6 +103,15 @@ const SearchResults = () => {
       </div>
     </>
   );
-};
+}
 
+const SearchResults = () => {
+  return (
+    <Suspense
+      fallback={<div className="p-6 text-white">Loading search...</div>}
+    >
+      <SearchContent />
+    </Suspense>
+  );
+};
 export default SearchResults;
