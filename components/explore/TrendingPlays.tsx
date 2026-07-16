@@ -42,13 +42,13 @@ const TrendingPlays = () => {
             className="flex items-center gap-4 group cursor-pointer"
           >
             <span className="text-gray-500 font-mono w-4">{i + 1}</span>
-            <div className="w-12 h-12 relative rounded overflow-hidden">
-              <Image
+            <div className="w-12 h-12 relative rounded overflow-hidden bg-gray-700">
+              {/* <Image
                 src={item.cover}
                 alt={item.title}
                 fill
                 className="object-cover"
-              />
+              /> */}
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-white text-sm font-medium truncate">

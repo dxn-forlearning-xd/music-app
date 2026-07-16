@@ -18,7 +18,8 @@ const PlayButton = ({
   return (
     <div className="ml-auto transition">
       <button
-        onClick={() => {
+        onClick={(e: React.MouseEvent) => {
+          e.stopPropagation();
           if (isCurrentTrack) {
             togglePlay();
           } else {

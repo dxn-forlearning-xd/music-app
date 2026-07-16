@@ -17,8 +17,8 @@ const TrackDetails = () => {
   return (
     <div className="p-6 max-w-4xl mx-auto text-white">
       <BackButton />
-      <div className="flex flex-col md:flex-row gap-8 items-start">
-        <div className="relative w-64 h-64 md:w-80 md:h-80 shadow-2xl shrink-0">
+      <div className="flex flex-col gap-8 items-start">
+        <div className="relative w-64 h-64 shadow-2xl shrink-0">
           <Image
             src={track.album.cover_big}
             alt={track.title}
@@ -31,7 +31,7 @@ const TrackDetails = () => {
           <p className="text-[#00C2CB] font-bold tracking-widest text-sm">
             SONG
           </p>
-          <h1 className="text-4xl md:text-6xl font-black">{track.title}</h1>
+          <h1 className="text-4xl font-black">{track.title}</h1>
 
           <div className="flex items-center gap-2 text-gray-400">
             <span className="text-white font-bold">{track.artist.name}</span>
